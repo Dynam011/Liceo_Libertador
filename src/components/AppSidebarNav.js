@@ -8,7 +8,7 @@ import 'simplebar-react/dist/simplebar.min.css'
 import { CBadge, CNavLink, CSidebarNav } from '@coreui/react'
 
 export const AppSidebarNav = ({ items }) => {
-  const navLink = (name, icon, badge, indent = false) => {
+  const navLink = (name, permission, icon, badge, indent = false) => {
     return (
       <>
         {icon
@@ -19,7 +19,7 @@ export const AppSidebarNav = ({ items }) => {
               </span>
             )}
         {name && name}
-        {badge && (
+        {badge && permission == 'liceo' && (
           <CBadge color={badge.color} className="ms-auto" size="sm">
             {badge.text}
           </CBadge>
@@ -29,7 +29,7 @@ export const AppSidebarNav = ({ items }) => {
   }
 
   const navItem = (item, index, indent = false) => {
-    const { component, name, badge, icon, ...rest } = item
+    const { component, name, permission, badge, icon, ...rest } = item
     const Component = component
     return (
       <Component as="div" key={index}>
@@ -39,10 +39,10 @@ export const AppSidebarNav = ({ items }) => {
             {...(rest.href && { target: '_blank', rel: 'noopener noreferrer' })}
             {...rest}
           >
-            {navLink(name, icon, badge, indent)}
+            {navLink(name, permission, icon, badge, indent)}
           </CNavLink>
         ) : (
-          navLink(name, icon, badge, indent)
+          navLink(name,permission, icon, badge, indent)
         )}
       </Component>
     )

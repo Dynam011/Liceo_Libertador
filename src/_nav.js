@@ -5,12 +5,11 @@ import {
   cilPeople,
   cilUser,
   cilBook,
-  cilCalendar,
+
   cilChartPie,
   cilSettings,
-  cilDoor,
-  cilSchool,
-  cilClipboard,
+    
+
 } from '@coreui/icons'
 import { CNavGroup, CNavItem, CNavTitle } from '@coreui/react'
 
@@ -19,6 +18,7 @@ const _nav = [
     component: CNavItem,
     name: 'Panel Principal',
     to: '/dashboard',
+    
     icon: <CIcon icon={cilSpeedometer} customClassName="nav-icon" />,
   },
   {
