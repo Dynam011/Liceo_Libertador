@@ -22,10 +22,12 @@ import {
   CWidgetStatsB,
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
+import Pag404 from '../pages/page404/Page404';
 import { cilUser, cilUserFemale, cilChartPie, cilSchool, cilCheckCircle, cilXCircle, cilStar } from '@coreui/icons'
 import MainChart from './MainChart'
 
-const Dashboard = () => {
+const Dashboard = (user) => {
+  if (user.permission != 'admin.dashboard') return <Pag404 />
   const stats = {
     totalStudents: 1200,
     approved: 950,
@@ -39,39 +41,39 @@ const Dashboard = () => {
       name: 'Juan Pérez',
       year: '1° Año',
       status: 'Aprobado',
-      average: 85,
+      average: 18,
       attendance: '95%',
     },
     {
       name: 'María López',
       year: '2° Año',
       status: 'Reprobado',
-      average: 45,
+      average: 9,
       attendance: '80%',
     },
     {
       name: 'Carlos García',
       year: '3° Año',
       status: 'Aprobado',
-      average: 90,
-      attendance: '98%',
+      average: 19,
+      attendance: '100%',
     },
   ]
 
   const bestMetrics = {
     bestYear: '3° Año',
-    bestAverage: 90,
+    bestAverage: 19,
     bestStudent: {
       name: 'Carlos García',
       year: '3° Año',
-      average: 90,
+      average: 19,
     },
     yearAverages: [
-      { year: '1° Año', average: 78 },
-      { year: '2° Año', average: 65 },
-      { year: '3° Año', average: 90 },
-      { year: '4° Año', average: 82 },
-      { year: '5° Año', average: 88 },
+      { year: '1° Año', average: 15 },
+      { year: '2° Año', average: 16 },
+      { year: '3° Año', average: 19 },
+      { year: '4° Año', average: 18 },
+      { year: '5° Año', average: 17 },
     ],
   }
 
@@ -171,7 +173,7 @@ const Dashboard = () => {
                 color="success"
                 value={bestMetrics.bestYear}
                 title="Año con Mejor Promedio"
-                progress={{ value: 90 }}
+                progress={{ value: 19 }}
               />
             </CCol>
             <CCol sm={6} lg={4}>

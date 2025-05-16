@@ -26,7 +26,8 @@ const MainChart = () => {
     })
   }, [chartRef])
 
-  const random = () => Math.round(Math.random() * 100)
+  // Genera un número aleatorio entre 1 y 20
+  const random = () => Math.floor(Math.random() * 20) + 1
 
   return (
     <>
@@ -34,7 +35,7 @@ const MainChart = () => {
         ref={chartRef}
         style={{ height: '300px', marginTop: '40px' }}
         data={{
-          labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+          labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio'],
           datasets: [
             {
               label: 'My First dataset',
@@ -43,13 +44,13 @@ const MainChart = () => {
               pointHoverBackgroundColor: getStyle('--cui-info'),
               borderWidth: 2,
               data: [
-                random(50, 200),
-                random(50, 200),
-                random(50, 200),
-                random(50, 200),
-                random(50, 200),
-                random(50, 200),
-                random(50, 200),
+                random(),
+                random(),
+                random(),
+                random(),
+                random(),
+                random(),
+                random(),
               ],
               fill: true,
             },
@@ -60,13 +61,13 @@ const MainChart = () => {
               pointHoverBackgroundColor: getStyle('--cui-success'),
               borderWidth: 2,
               data: [
-                random(50, 200),
-                random(50, 200),
-                random(50, 200),
-                random(50, 200),
-                random(50, 200),
-                random(50, 200),
-                random(50, 200),
+                random(),
+                random(),
+                random(),
+                random(),
+                random(),
+                random(),
+                random(),
               ],
             },
             {
@@ -76,7 +77,7 @@ const MainChart = () => {
               pointHoverBackgroundColor: getStyle('--cui-danger'),
               borderWidth: 1,
               borderDash: [8, 5],
-              data: [65, 65, 65, 65, 65, 65, 65],
+              data: [16, 16, 16, 16, 16, 16, 16],
             },
           ],
         }}
@@ -105,11 +106,11 @@ const MainChart = () => {
               grid: {
                 color: getStyle('--cui-border-color-translucent'),
               },
-              max: 250,
+              max: 20,
               ticks: {
                 color: getStyle('--cui-body-color'),
                 maxTicksLimit: 5,
-                stepSize: Math.ceil(250 / 5),
+                stepSize: 5,
               },
             },
           },
