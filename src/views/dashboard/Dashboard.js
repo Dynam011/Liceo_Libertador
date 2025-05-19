@@ -27,7 +27,7 @@ import { cilUser, cilUserFemale, cilChartPie, cilSchool, cilCheckCircle, cilXCir
 import MainChart from './MainChart'
 
 const Dashboard = (user) => {
-  if (user.permission != 'admin.dashboard') return <Pag404 />
+  if (user.permission == 'admin.dashboard') return <Pag404 />
   const stats = {
     totalStudents: 1200,
     approved: 950,
