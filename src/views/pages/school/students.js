@@ -37,6 +37,7 @@ const StudentForm = () => {
   const [formData, setFormData] = useState(initialForm)
   const [editId, setEditId] = useState(null)
   const [viewStudent, setViewStudent] = useState(null)
+  const [search, setSearch] = useState('')
 
   const handleInputChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
@@ -72,6 +73,13 @@ const StudentForm = () => {
     setViewStudent(null)
   }
 
+  // Filtrar estudiantes por cédula, nombre o apellido
+  const filteredStudents = students.filter(student =>
+    student.cedula.toLowerCase().includes(search.toLowerCase()) ||
+    student.nombres.toLowerCase().includes(search.toLowerCase()) ||
+    student.apellidos.toLowerCase().includes(search.toLowerCase())
+  )
+
   return (
     <div className="p-4">
       <div className="d-flex justify-content-between align-items-center mb-4">
@@ -79,6 +87,16 @@ const StudentForm = () => {
         <CButton color="info" onClick={() => { setFormData(initialForm); setEditId(null); setVisible(true) }}>
           Registrar Estudiante
         </CButton>
+      </div>
+
+      {/* Barra de búsqueda */}
+      <div className="mb-3">
+        <CFormInput
+          type="text"
+          placeholder="Buscar por cédula, nombre o apellido..."
+          value={search}
+          onChange={e => setSearch(e.target.value)}
+        />
       </div>
 
       <CModal visible={visible} onClose={() => { setVisible(false); setEditId(null); }}>
@@ -185,7 +203,7 @@ const StudentForm = () => {
           </CTableRow>
         </CTableHead>
         <CTableBody>
-          {students.map(student => (
+          {filteredStudents.map(student => (
             <CTableRow key={student.id}>
               <CTableDataCell>{student.cedula}</CTableDataCell>
               <CTableDataCell>{student.nombres}</CTableDataCell>
